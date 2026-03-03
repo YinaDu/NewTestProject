@@ -16,10 +16,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.x'
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1
+    - name: Restore Packages
+      run: nuget restore WebApplication1.sln
+    - name: Build Solution
+      run: msbuild.exe MySolution.sln /p:configuration="Release"
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
