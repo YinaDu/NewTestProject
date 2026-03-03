@@ -23,7 +23,7 @@ jobs:
     - name: Restore Packages
       run: nuget restore WebApplication1.sln
     - name: Build Solution
-      run: msbuild.exe MySolution.sln /p:configuration="Release"
+      run: msbuild.exe WebApplication1.sln /p:configuration="Release"
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
